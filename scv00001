@@ -1,0 +1,34 @@
+// Safe Smart Contract for BNB Chain
+
+// Import the necessary libraries
+pragma solidity ^0.8.0;
+
+contract SafeSmartContract {
+    // Define a struct to represent a user compartment
+    struct Compartment {
+        uint lockedTokens;
+        uint lockDuration;
+        uint unlockTime;
+        uint calculatedRewards;
+        address userAddress;
+    }
+
+    // Define a mapping to store user compartments
+    mapping(address => Compartment) public userCompartments;
+
+    // Define a function to allow users to send tokens to the contract and lock them for a specified duration
+    function lockTokens(uint duration) external {
+        // Implement the token locking mechanism here
+    }
+
+    // Define a function to calculate rewards based on the locking period
+    function calculateRewards(address user) internal view returns (uint) {
+        // Implement the reward calculation mechanism here
+    }
+
+    // Define a modifier to ensure that only the owner of the tokens can lock, unlock, or query their compartment
+    modifier onlyOwner(address user) {
+        require(msg.sender == userCompartments[user].userAddress, "You are not the owner of this compartment");
+        _;
+    }
+}
